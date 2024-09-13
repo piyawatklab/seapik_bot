@@ -9,6 +9,13 @@ import requests
 
 import pandas as pd
 
+options = webdriver.ChromeOptions()
+options.add_argument("--start-maximized")
+prefs = {"profile.default_content_settings.popups": 0,
+            "download.default_directory": f'{PWD}/downloaded_files/',
+            "directory_upgrade": True}
+options.add_experimental_option("prefs",prefs)
+
 df = pd.read_excel('order.xlsx')
 data_dict = df[['Word']].to_dict(orient='records')
 
